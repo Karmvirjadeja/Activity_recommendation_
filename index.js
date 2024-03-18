@@ -26,6 +26,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+  try{
   console.log(req.body);
   const type = req.body.type;
   const participants=req.body.participants;
@@ -38,7 +39,14 @@ app.post("/", async (req, res) => {
 res.render("index.js",{
   data:result[Math.floor(Math.random()*result.length)],
 });
- 
+}
+
+catch(error){
+console.error("Failed to make request:", error.message);
+res.render("index.js",{
+  error: "No activities that match your criteria.",
+});
+}
   
   // Render the index.ejs file with a single *random* activity that comes back
   // from the API request.
