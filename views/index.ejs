@@ -58,10 +58,11 @@
       
       
 
-      
+    <%if (locals.error) {%>
       <div id="tag-error" class="tag-error">
-        <!-- Show any errors that were sent from the backend -->
+        <%=error%>
       </div>
+    <%}%>
 
     </section>
   </div>
